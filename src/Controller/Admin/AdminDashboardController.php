@@ -34,12 +34,12 @@ class AdminDashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Gestion Agent', 'fas fa-list', Agent::class);
-        yield MenuItem::linkToCrud('Clients', 'fas fa-list', Client::class);
-        yield MenuItem::linkToCrud('Fournisseur', 'fas fa-list', Fournisseur::class);
-        yield MenuItem::linkToCrud('Fourgon', 'fas fa-list', Fourgon::class);
-        yield MenuItem::linkToCrud('Remorque', 'fas fa-list', Remorque::class);
-        yield MenuItem::linkToCrud('Parking', 'fas fa-list', Parking::class);
-        yield MenuItem::linkToCrud('Transit', 'fas fa-list', Transaction::class);
+        yield MenuItem::linkToCrud('Gestion Agent', 'fa fa-address-book', Agent::class);
+        yield MenuItem::linkToCrud('Clients', 'fa fa-id-badge', Client::class);
+        yield MenuItem::linkToCrud('Fournisseur', 'fa fa-gears', Fournisseur::class);
+        yield MenuItem::linkToCrud('Fourgon', 'fa fa-bus', Fourgon::class);
+        yield MenuItem::linkToCrud('Remorque', 'fa fa-truck ', Remorque::class);
+        yield MenuItem::linkToCrud('Parking', 'fa fa-car', Parking::class);
+        yield MenuItem::linkToCrud('Transit', 'fa fa-check', Transaction::class);
     }
 }
