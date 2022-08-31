@@ -148,4 +148,8 @@ class Parking
 
         return $this;
     }
+    public function __toString()
+    {
+        return  $this->AdressParking;
+    }
 }
