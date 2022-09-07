@@ -2,6 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\AgentRepository;
+use App\Repository\RemorqueRepository;
+use App\Repository\FournisseurRepository;
+use App\Repository\ClientRepository;
+use App\Repository\TransactionRepository;
 use App\Entity\Agent;
 use App\Entity\Client;
 use App\Entity\Fourgon;
@@ -9,6 +14,7 @@ use App\Entity\Fournisseur;
 use App\Entity\Parking;
 use App\Entity\Remorque;
 use App\Entity\Transaction;
+use App\Repository\FourgonRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -18,17 +24,63 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminDashboardController extends AbstractDashboardController
 {
     /**
+     * @var AgentRepository
+     */
+
+    protected AgentRepository $AgentRepository;
+    /**
+     * @var RemorqueRepository
+     */
+
+    protected RemorqueRepository $RemorqueRepository;
+    /**
+     * @var TransactionRepository
+     */
+
+    protected transactionRepository $TransactionRepository;
+    /**
+     * @var FournisseurRepository
+     */
+
+    protected FournisseurRepository $fourniRepository;
+    /**
+     * @var ClientRepository
+     */
+    protected ClientRepository $ClientRepository;
+    public function __construct(
+        AgentRepository $AgentRepository,
+        ClientRepository $ClientRepository,
+        FournisseurRepository $fourniRepository,
+        TransactionRepository $TransactionRepository,
+        RemorqueRepository $RemorqueRepository
+
+    ) {
+        $this->AgentRepository = $AgentRepository;
+        $this->ClientRepository = $ClientRepository;
+        $this->FournisseurRepository = $fourniRepository;
+        $this->TransactionRepository = $TransactionRepository;
+        $this->RemorqueRepository = $RemorqueRepository;
+    }
+    /**
      * @Route("/admin", name="admin")
      */
     public function index(): Response
     {
-        return  $this->render('admin/index.html.twig');
+
+        return  $this->render('admin/index.html.twig', [
+            'countAgent' => $this->AgentRepository->countAllAgent(),
+            'countClient' => $this->ClientRepository->countAllClient(),
+            'countFourni' => $this->FournisseurRepository->countAllFourni(),
+            'countTransit' => $this->TransactionRepository->countAllTransit(),
+            'countRemorque' => $this->RemorqueRepository->countAllRemorque(),
+
+        ]);
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Fournisseur');
+            ->setTitle('YMNA TRADING SARL ');
     }
 
     public function configureMenuItems(): iterable
