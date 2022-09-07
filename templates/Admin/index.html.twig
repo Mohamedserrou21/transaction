@@ -6,8 +6,53 @@
 		</h1>
 		<p class="lead">
 			Bienvenue dans l'interface administration YMNA TRADING SARL
+			<img style="width: 170px ; margin-left:290px" src="img/LOGO.JPG" class="z-index" alt=""/>
 		</p>
-		<img style="width: 500px ; margin-left:190px" src="img/LOGO.JPG" class="z-index" alt=""/>
 
+		<div class="row">
+			<h1>
+				Statistique
+			</h1>
+		</div>
+		<div class="row mt-3">
+			<div class="col-6 alert-success">
+				<span class="display-3">
+					{{ countAgent['value'] }}
+				</span>
+				Agent
+			</div>
+			<div class="col-6 alert-dark">
+				<span class="display-3">
+					{{ countClient['value'] }}
+				</span>
+				Client
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col-6 alert-dark">
+				<span class="display-3">{{ countFourni['value'] }}</span>
+				Fournisseur
+			</div>
+			<div class="col-6 alert-success">
+				<span class="display-3">
+					{{ countAgent['value'] }}
+				</span>
+				Agent
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col-6 alert-success">
+				<span class="display-3">
+					{{ countTransit['value'] }}
+				</span>
+				Transactions
+			</div>
+			<div class="col-6 alert-dark">
+				<span class="display-3">{{ countRemorque['value'] }}</span>
+				Remorque
+			</div>
+		</div>
 	</div>
 {% endblock %}
